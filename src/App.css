@@ -1,5 +1,6 @@
 body{
   padding: 0 15px 0 15px;
+  max-height: fit-content;
 }
 
 .meal-category:hover{

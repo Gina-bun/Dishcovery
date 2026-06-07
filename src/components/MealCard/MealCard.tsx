@@ -13,10 +13,11 @@ export function MealCard({ meal }: MealCardProps){
         <>
         <div
         onClick={() => navigate(`/recipe/₵{meal.idMeal}`)}
+        className="bg-orange-200 p-1 rounded-bl-md rounded-br-md grid h-full"
         style={{cursor:"pointer"}}
         >
             <img src={meal.strMealThumb} alt={meal.strMeal} />
-            <h3>{meal.strMeal}</h3>
+            <h3 className="text-mauve-900 font-medium text-center my-auto">{meal.strMeal}</h3>
 
         </div>
         </>
