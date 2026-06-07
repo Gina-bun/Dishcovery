@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router'
 import './Navbar.css'
-import { Menu, X, Bookmark } from 'lucide-react'
+import { Menu, X, Bookmark, HandPlatter } from 'lucide-react'
 
 export function Navbar(){
     const [open, setOpen] = useState(false)
@@ -11,8 +11,8 @@ export function Navbar(){
     return (
         <header className="navbar">
             <div className="nav-inner">
-                <NavLink to="/" className="brand" onClick={closeMenu}>
-                    Dischovery
+                <NavLink to="/" className="brand flex" onClick={closeMenu}>
+                    <HandPlatter style={{marginTop: "auto", marginBottom: "auto"}}/> Dischoverie
                 </NavLink>
 
                 <button
