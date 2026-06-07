@@ -1,18 +1,22 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router'
 import './Navbar.css'
-import { Menu, X, Search, Bookmark } from 'lucide-react'
+import { Menu, X, Bookmark } from 'lucide-react'
 
 export function Navbar(){
     const [open, setOpen] = useState(false)
 
+    const closeMenu = () => setOpen(false)
+
     return (
         <header className="navbar">
             <div className="nav-inner">
-                <div className="brand">Dishcovery</div>
+                <NavLink to="/" className="brand" onClick={closeMenu}>
+                    Dischovery
+                </NavLink>
 
                 <button
-                    className="nav-toggle"
+                    className="nav-toggle bg-amber-50"
                     aria-label={open ? 'Close menu' : 'Open menu'}
                     aria-expanded={open}
                     onClick={() => setOpen(v => !v)}
@@ -20,15 +24,19 @@ export function Navbar(){
                     {open ? <X size={20} /> : <Menu size={20} />}
                 </button>
 
-                <nav className={`nav-links ${open ? 'open' : ''}`} aria-hidden={!open && true}>
-                    <Link to="/" className="nav-link" >Home</Link>
-                    <Link to="/categories" className="nav-link">Categories</Link>
-                     <Link className="nav-link" to="meals">Meal list</Link>
-                    <Link className="nav-link" to="recipe">Recipe Detail</Link>
-                    <Link className="nav-link" to="saved"><Bookmark size={16} style={{marginRight:8}}/>Saved</Link>
-                    <div className="nav-search">
+                <nav className={`nav-links ${open ? 'open' : ''}`}>
+                  <NavLink to="/" className="nav-link" onClick={closeMenu} end> 
+                    Home
+                  </NavLink>
+                  <NavLink to="/categories" className="nav-link" onClick={closeMenu}>
+                    Browse
+                  </NavLink>
+                  <NavLink to="/saved" className="nav-link flex gap-1" onClick={closeMenu}>
+                  <Bookmark size={16} style={{marginTop: "auto", marginBottom: "auto"}} />
+                    Saved
+                  </NavLink>
           
-                    </div>
+                
                 </nav>
             </div>
         </header>
