@@ -1,11 +1,11 @@
 import { useParams } from "react-router";
 import type { Meal } from "../../types/types";
-import { Clover, Heart, HeartOff } from "lucide-react";
+import { Heart, Star} from "lucide-react";
 import useFetch from "../../hooks/useFetch";
 import { useSavedMeals } from "../../context/SavedMealsContext";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { useEffect } from "react";
-
+import "./RecipeDetail.css"
 interface RecipeDetailResponse {
   meals: Meal[];
 }
@@ -52,48 +52,59 @@ export function RecipeDetail() {
 
   return (
     <>
-      <div>
-        <img src={meal.strMealThumb} alt={meal.strMeal} />
-        <h1>{meal.strMeal}</h1>
-        <p>
-          {meal.strCategory} <Clover /> {meal.strArea}
+      <div className="recipe-container h-fit pb-5 md:grid grid-cols-2 md:gap-5">
+        <div className="md:bg-amber-100 flex flex-col justify-center">
+            <img src={meal.strMealThumb} alt={meal.strMeal} className="sm:w-160 sm:p-2 sm:m-auto md:self-start md:m-auto" />
+             <h1 className="recipe-name md:text-4xl md:text-center md:m-auto md:-mt-3">{meal.strMeal}</h1>
+        </div>
+        
+        
+        <div>
+           
+       <div className="sm:flex justify-between">
+         <p className="flex gap-1">
+          {meal.strCategory} <Star size={12} style={{ fontWeight: "bold", marginTop: "auto", marginBottom: "auto", fill: "black"}}/> {meal.strArea}
         </p>
 
         <button
+        className="w-fit"
           onClick={() => (saved ? removeMeal(meal.idMeal) : saveMeal(meal))}
         >
           {saved ? (
-            <div>
-              <HeartOff /> <span>Remove from Saved</span>
+            <div className="unsave-btn">
+              <Heart  style={{marginRight: ".4rem",fill: "red"}}/> <span>Saved</span>
             </div>
           ) : (
-            <div>
-              <Heart /> <span>Save Recipe</span>
+            <div className="save-btn">
+              <Heart style={{marginRight: ".4rem"}}/> <span>Save Recipe</span>
             </div>
           )}
         </button>
+       </div>
 
-        <h2>Ingredients</h2>
-        <ul>
+        <h2 className="text-lg font-medium text-orange-500">Ingredients</h2>
+        <ul className="pb-2">
           {getIngredients().map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
 
-        <h2>Instructions</h2>
-        <p>{meal.strInstructions}</p>
+        <h2 className="text-lg font-medium text-orange-500">Instructions</h2>
+        <p className="pb-2">{meal.strInstructions}</p>
 
         {meal.strYoutube && (
           <div>
-            <h2>Video Tutorial</h2>
+            <h2 className="text-lg font-medium">Video Tutorial</h2>
             <iframe
-              width="560"
+              width="350"
               height="315"
+              className="sm:w-170"
               src={getYouTubeEmbedUrl(meal.strYoutube)}
               allowFullScreen
             ></iframe>
           </div>
         )}
+        </div>
       </div>
     </>
   );

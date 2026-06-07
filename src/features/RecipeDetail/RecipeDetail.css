@@ -1,0 +1,22 @@
+.recipe-container{
+    font-size: 1.1rem;
+}
+
+
+
+.recipe-name{
+    font-size: 1.3rem;
+    padding-top:.5rem;
+    font-weight: medium;
+    color: oklch(51.4% 0.222 16.935);
+}
+
+.save-btn, .unsave-btn{
+    display: flex; 
+}
+
+@media (min-width: 650px){
+    .recipe-container:not(img){
+    padding: 1.2rem;
+}
+}
