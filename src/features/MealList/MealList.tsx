@@ -29,12 +29,12 @@ export function MealList(){
 
     return (
         <>
-        <h1>{title}</h1>
+        <h1 className="font-medium py-3 pb-5 text-rose-600 sm:text-xl">{title}</h1>
         {
             !data?.meals ? (
                 <p>No meals found. try something else.</p>
             ) : (
-                <div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 pb-12">
                     {data.meals.map((meal) => (
                         <MealCard key={meal.idMeal} meal={meal} />
                     ))}
