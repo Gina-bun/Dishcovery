@@ -5,6 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import { UtensilsCrossed } from "lucide-react";
 import { Searchbar } from "../../components/SearchBar/Searchbar";
 import "./HomePage.css"
+import { useEffect } from "react";
 interface RandomMealResponse {
   meals: Meal[];
 }
@@ -15,6 +16,10 @@ interface CategoriesResponse {
 
 export function HomePage() {
   const navigate = useNavigate();
+
+   useEffect(() => {
+    document.title = "Dishcovery | Home";
+  }, []);
 
   const { data: categoriesData, loading: categoriesLoading } =
     useFetch<CategoriesResponse>(

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { MealCard } from "../../components/MealCard/MealCard"
 import { useSavedMeals } from "../../context/SavedMealsContext"
 
@@ -6,6 +7,10 @@ import { useSavedMeals } from "../../context/SavedMealsContext"
 
 export function Saved(){
     const {savedMeals} = useSavedMeals()
+
+     useEffect(() => {
+    document.title = "Dishcovery | Saved";
+  }, []);
 
     return (
         <>

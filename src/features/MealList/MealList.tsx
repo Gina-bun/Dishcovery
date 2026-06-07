@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router"
 import type { Meal } from "../../types/types"
 import useFetch from "../../hooks/useFetch"
 import { MealCard } from "../../components/MealCard/MealCard"
+import { Spinner } from "../../components/Spinner/Spinner"
 
 interface MealListResponse {
     meals: Meal[] | null
@@ -23,7 +24,7 @@ export function MealList(){
 
     const title = category ? category : search ? `Results for "${search}"` : "Meals"
 
-    if (loading) return <p>Loading meals...</p>
+    if (loading) return <Spinner />
     if (error) return <p>Something went wrong: {error}</p>
 
     return (
