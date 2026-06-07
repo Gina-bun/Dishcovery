@@ -6,7 +6,10 @@ const useFetch = <T>(url: string | null) => {
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        if(!url) return
+        if(!url) {
+            setLoading(false)
+            return
+        }
 
         setLoading(true)
         setError(null)

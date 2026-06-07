@@ -23,8 +23,8 @@ export function Navbar(){
                 <nav className={`nav-links ${open ? 'open' : ''}`} aria-hidden={!open && true}>
                     <Link to="/" className="nav-link" >Home</Link>
                     <Link to="/categories" className="nav-link">Categories</Link>
-                     <Link className="nav-link" to="meal-list">Meal list</Link>
-                    <Link className="nav-link" to="recipe-detail">Recipe Detail</Link>
+                     <Link className="nav-link" to="meals">Meal list</Link>
+                    <Link className="nav-link" to="recipe">Recipe Detail</Link>
                     <Link className="nav-link" to="saved"><Bookmark size={16} style={{marginRight:8}}/>Saved</Link>
                     <div className="nav-search">
           
