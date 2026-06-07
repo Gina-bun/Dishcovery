@@ -12,7 +12,7 @@ export function MealCard({ meal }: MealCardProps){
     return (
         <>
         <div
-        onClick={() => navigate(`/recipe/₵{meal.idMeal}`)}
+        onClick={() => navigate(`/recipe/${meal.idMeal}`)}
         className="bg-orange-200 p-1 rounded-bl-md rounded-br-md grid h-full"
         style={{cursor:"pointer"}}
         >
