@@ -1,6 +1,6 @@
 
 import { createContext, useState, useEffect } from "react"
-import { Meal } from "../types/types"
+import type { Meal } from "../types/types"
 
 interface SavedMealsContextType {
     savedMeals: Meal[]
@@ -14,7 +14,7 @@ const SavedMealsContext = createContext<SavedMealsContextType | undefined>(undef
 export const SavedMealsProvider = ({children} : {children: React.ReactNode}) => {
     const [savedMeals, setSavedMeals] = useState<Meal[]>(() => {
         const stored = localStorage.getItem("savedMeals")
-        return stored ? JSON.parsed(stored) : []
+        return stored ? JSON.parse(stored) : []
     })
 
     useEffect(() => {
@@ -22,7 +22,7 @@ export const SavedMealsProvider = ({children} : {children: React.ReactNode}) => 
 
     }, [savedMeals])
 
-    const savedMeal = (meal: Meal) => {
+    const saveMeal = (meal: Meal) => {
         setSavedMeals((prev) => [...prev, meal])
     }
 

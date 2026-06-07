@@ -8,3 +8,10 @@ export interface Meal {
   strYoutube?: string;
   [key: string]: string | undefined;
 }
+
+export interface Category {
+    idCategory: string;
+    strCategory: string;
+    strCategoryThumb: string;
+    strCategoryDescription: string;
+}

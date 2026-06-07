@@ -27,8 +27,7 @@ export function Navbar(){
                     <Link className="nav-link" to="recipe-detail">Recipe Detail</Link>
                     <Link className="nav-link" to="saved"><Bookmark size={16} style={{marginRight:8}}/>Saved</Link>
                     <div className="nav-search">
-                        <Search size={16} />
-                        <input className="search-input" type="search" placeholder="Search meals" />
+          
                     </div>
                 </nav>
             </div>
