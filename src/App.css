@@ -1,3 +1,7 @@
 body{
   padding: 0 15px 0 15px;
 }
+
+.meal-category:hover{
+   background-color: oklch(91.208% 0.07454 79.157);
+}
