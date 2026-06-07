@@ -4,8 +4,9 @@ import type { Category } from "../../types/types";
 import useFetch from "../../hooks/useFetch";
 import { UtensilsCrossed } from "lucide-react";
 import { Searchbar } from "../../components/SearchBar/Searchbar";
-import "./HomePage.css"
+import "./HomePage.css";
 import { useEffect } from "react";
+import { Spinner } from "../../components/Spinner/Spinner";
 interface RandomMealResponse {
   meals: Meal[];
 }
@@ -17,7 +18,7 @@ interface CategoriesResponse {
 export function HomePage() {
   const navigate = useNavigate();
 
-   useEffect(() => {
+  useEffect(() => {
     document.title = "Dishcovery | Home";
   }, []);
 
@@ -40,25 +41,46 @@ export function HomePage() {
     <>
       <Searchbar />
 
-      <div className="flex justify-center p-5">
-        <button onClick={handleRandom} className="flex bg-teal-300 p-2">
-          <UtensilsCrossed />
+      <div className="intro-message flex flex-col items-center md:gap-2">
+        <h1 className="text-2xl text-rose-600 sm:text-3xl sm:pb-1">Step away from the takeout menu!</h1>
+        <p className="text-lg text-center py-1 text-gray-900 md:w-[50%]">
+          Welcome to your new kitchen happy place. We serve up foolproof recipes
+          that are high on flavor and low on stress. No fancy chef hats
+          required. Grab an apron, blast your favorite playlist, and let’s make
+          something delicious!
+        </p>
+      </div>
+
+      <div className="flex justify-center pb-3">
+        <button
+          onClick={handleRandom}
+          className="flex gap-1 text-zinc-800 bg-rose-500 p-2.5 px-3 text-md font-medium"
+        >
+          <UtensilsCrossed
+            size={20}
+            style={{ marginBottom: "auto", marginTop: "auto" }}
+          />
           Surprise Me!
         </button>
       </div>
 
-      <h1 className="text-2xl pb-2 pl-5">Browse by Category</h1>
-      {categoriesLoading && <p>Loading categories...</p>}
+      <h1 className="text-2xl py-2 pt-8 sm:text-3xl sm:py-5  pl-5 text-center text-orange-500">
+        Browse by Category
+      </h1>
+      {categoriesLoading && <Spinner />}
 
-      <div className="grid grid-cols-3 text-center">
+      <div className="category-section grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-center">
         {categoriesData?.categories.slice(0, 6).map((category) => (
           <div
+            className="bg-zinc-200 p-2 meal-category"
             key={category.idCategory}
             onClick={() => navigate(`/meals?category=${category.strCategory}`)}
             style={{ cursor: "pointer" }}
           >
             <img src={category.strCategoryThumb} alt={category.strCategory} />
-            <p>{category.strCategory}</p>
+            <p className="font-medium py-1 sm:py-3 text-mauve-800">
+              {category.strCategory}
+            </p>
           </div>
         ))}
       </div>

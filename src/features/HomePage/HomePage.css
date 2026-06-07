@@ -1,0 +1,13 @@
+.intro-message{
+    text-align: center;
+    padding: 2rem .5rem .5rem;
+}
+
+.category-section{
+    padding-bottom: 4rem;
+}
+
+.meal-category:hover{
+   background-color: oklch(91.208% 0.07454 79.157);
+}
+
